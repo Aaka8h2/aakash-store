@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnify - Secure Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center; /* Center the logo */
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url('https://img.icons8.com/color/48/000000/learning.png') no-repeat center/contain;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .payment-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .payment-header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-price {
+            font-size: 1.2rem;
+            color: #6a11cb;
+            font-weight: 500;
+        }
+
+        /* Crypto Payments */
+        .crypto-payment {
+            margin-top: 2rem;
+        }
+
+        .crypto-payment h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .crypto-wallets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .crypto-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .crypto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .crypto-header img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .crypto-address {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .crypto-address code {
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #4a0b9d;
+        }
+
+        .qr-code img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Confirm Payment Button */
+        .confirm-payment {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .confirm-btn {
+            background: #6a11cb;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .confirm-btn:hover {
+            background: #4a0b9d;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .payment-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .course-price {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="logo">Learnify</div>
+    </header>
+
+    <!-- Payment Main Content -->
+    <main class="container payment-container">
+        <div class="payment-header">
+            <h1>Secure Course Payment</h1>
+            <p class="course-price">Total: $199</p>
+        </div>
+
+        <!-- Payment Methods -->
+        <section class="payment-methods">
+            <!-- Crypto Payments -->
+            <div class="crypto-payment">
+                <h2><i class="fab fa-bitcoin"></i> Cryptocurrency Payments</h2>
+                
+                <div class="crypto-wallets">
+                    <!-- Bitcoin -->
+                    <div class="crypto-card">
+                        <div class="crypto-header">
+                            <img src="https://img.icons8.com/color/48/000000/bitcoin--v1.png" alt="Bitcoin">
+                            <h3>Bitcoin (BTC)</h3>
+                        </div>
+                        <div class="crypto-address">
+                            <code id="btc-address">bc1qsrlvrhxjauljk0vp8scgwgj9p5ep2eph2n60l2</code>
+                            <button class="copy-btn" onclick="copyAddress('btc-address')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bitcoin:bc1qsrlvrhxjauljk0vp8scgwgj9p5ep2eph2n60l2" alt="BTC QR">
+                        </div>
+                    </div>
+
+                    <!-- Ethereum -->
+                    <div class="crypto-card">
+                        <div class="crypto-header">
+                            <img src="https://img.icons8.com/color/48/000000/ethereum.png" alt="Ethereum">
+                            <h3>Ethereum (ETH)</h3>
+                        </div>
+                        <div class="crypto-address">
+                            <code id="eth-address">0xF53AC2DFBFFE686E80C18A88898c9791eD5A1a49</code>
+                            <button class="copy-btn" onclick="copyAddress('eth-address')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xF53AC2DFBFFE686E80C18A88898c9791eD5A1a49" alt="ETH QR">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confirm Payment Button -->
+        <div class="confirm-payment">
+            <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment</button>
+        </div>
+    </main>
+
+    <script>
+        // Function to copy wallet address
+        function copyAddress(id) {
+            const address = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                alert('Address copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy address: ', err);
+            });
+        }
+
+        // Function to handle payment confirmation and redirect to Telegram
+        function confirmPayment() {
+            // Open your Telegram link in a new tab
+            window.open('https://t.me/aaka8h', '_blank');
+            
+            // Optionally, show a confirmation message
+            alert('Thank you for your payment! Please contact us on Telegram for further assistance.');
+        }
+    </script>
+</body>
+</html>
